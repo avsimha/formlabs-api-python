@@ -1,0 +1,269 @@
+{
+    "id": 1,
+    "owner": {
+        "name": "avsimha@amazon.com",
+        "email": "avsimha@amazon.com"
+    },
+    "people": [
+        {
+            "name": "avsimha@amazon.com",
+            "email": "avsimha@amazon.com"
+        }
+    ],
+    "scene": {
+        "layer_count": 670,
+        "material_usage": {
+            "mass_packing_density": 0.1339537947460053,
+            "total_powder_kg": 1.1461325935534152,
+            "total_powder_ml": 2415.843533411995,
+            "total_sintered_powder_kg": 0.15352881018856093,
+            "total_sintered_powder_ml": 159.92584394641764
+        },
+        "models": [
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": 69.52830505371094,
+                        "y": 13.748151779174805,
+                        "z": 72.66242218017578
+                    },
+                    "min_corner": {
+                        "x": -21.872346878051758,
+                        "y": -63.47615051269531,
+                        "z": 12.660179138183594
+                    }
+                },
+                "canonical_model_hash": "dc36a01fd55e71ff7024b837764acf4c04cc349e7e62bbf4a4dca831",
+                "has_supports": false,
+                "id": "{f97276d5-b88a-4ab2-a8a2-d6fa57567f46}",
+                "in_bounds": true,
+                "name": "rossby_midframe_mbb_asy_asm_1003_final",
+                "orientation": {
+                    "x": 0.783338725566864,
+                    "y": 90.00001525878906,
+                    "z": 179.8881072998047
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/rossby_midframe_mbb_asy_asm_1003_final.stl",
+                "position": {
+                    "x": 23.82731819152832,
+                    "y": -24.86400032043457,
+                    "z": 42.595970153808594
+                },
+                "raw_mesh_hash": "0080234e78a46e338bdb893f4d44adfd0a729f707273dd71f6a66720",
+                "scale": 1,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": 12.500134468078613,
+                        "y": 0.9054889678955078,
+                        "z": 8.662199020385742
+                    },
+                    "min_corner": {
+                        "x": -12.50012493133545,
+                        "y": -29.93327522277832,
+                        "z": 0.6603937149047852
+                    }
+                },
+                "canonical_model_hash": "b3c5f885b7dc8911466aa1c90f98798c7831a8600d4adcc884cd65f0",
+                "has_supports": false,
+                "id": "{3280b235-e6a0-4236-be97-818199fd5bd5}",
+                "in_bounds": true,
+                "name": "gear_knee",
+                "orientation": {
+                    "x": -0.002756742760539055,
+                    "y": -0.0027468467596918344,
+                    "z": -44.99726104736328
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/gear_knee.stl",
+                "position": {
+                    "x": 0.0003022587043233216,
+                    "y": -18.548437118530273,
+                    "z": 4.661376953125
+                },
+                "raw_mesh_hash": "36373d6e4bd6fb57248b66fce689932933e989c9f758eaa811b1e36a",
+                "scale": 1,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": 79.62245178222656,
+                        "y": 59.24654006958008,
+                        "z": 13.322699546813965
+                    },
+                    "min_corner": {
+                        "x": -79.6224594116211,
+                        "y": -79.9665298461914,
+                        "z": 9.851902723312378e-05
+                    }
+                },
+                "canonical_model_hash": "2276af0ae6f8b941495632f489c3c9aba516fe9834c5fbd5584807b5",
+                "has_supports": false,
+                "id": "{38fefe4e-add9-4dca-8f3c-ba0e13dd2c36}",
+                "in_bounds": true,
+                "name": "V1_PENG_049_03_TOP_housing-ToF",
+                "orientation": {
+                    "x": 30.9375,
+                    "y": -90.0000228881836,
+                    "z": -90.00001525878906
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/V1_PENG_049_03_TOP_housing-ToF.stl",
+                "position": {
+                    "x": 18.224214553833008,
+                    "y": 93.40502166748047,
+                    "z": -0.1192227229475975
+                },
+                "raw_mesh_hash": "8dde91d3e66268474a9ff85a66f2350396b3017953fdea23661b4d12",
+                "scale": 0.45222485065460205,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": -28.619123458862305,
+                        "y": -8.735776901245117,
+                        "z": 34.9996223449707
+                    },
+                    "min_corner": {
+                        "x": -77.1717529296875,
+                        "y": -68.32598876953125,
+                        "z": 4.322972297668457
+                    }
+                },
+                "canonical_model_hash": "5979fa9514949a364023dad769a253e4027d1b62c64deabe2c815a89",
+                "has_supports": false,
+                "id": "{57a4b578-e3f1-4f3e-9a31-8c7d6f24e994}",
+                "in_bounds": true,
+                "name": "3DBenchy",
+                "orientation": {
+                    "x": 41.69077682495117,
+                    "y": -73.69248962402344,
+                    "z": -88.79440307617188
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/3DBenchy.stl",
+                "position": {
+                    "x": -37.877601623535156,
+                    "y": -27.476337432861328,
+                    "z": 17.413818359375
+                },
+                "raw_mesh_hash": "7163d8ba5d49617ffd838b60659623a12d39a8fa46aa7020a6eb964d",
+                "scale": 1,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": -40.67902755737305,
+                        "y": 81.56888580322266,
+                        "z": 24.43590545654297
+                    },
+                    "min_corner": {
+                        "x": -81.56898498535156,
+                        "y": 40.67911911010742,
+                        "z": 10.88668441772461
+                    }
+                },
+                "canonical_model_hash": "618813d23a5ac7327076ac49360d0e17a2ea6e0cf331778285f6054f",
+                "has_supports": false,
+                "id": "{30ab1571-f8ba-48e0-a593-270fab772ec3}",
+                "in_bounds": true,
+                "name": "gear_hypoid_left",
+                "orientation": {
+                    "x": -20.304014205932617,
+                    "y": -138.9351806640625,
+                    "z": -68.28411102294922
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/gear_hypoid_left.stl",
+                "position": {
+                    "x": -74.12451171875,
+                    "y": 68.4462661743164,
+                    "z": 16.410980224609375
+                },
+                "raw_mesh_hash": "ea8f659841bd4e387908587cd452f9a7a27a9fd44a61df8abace0984",
+                "scale": 1,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": 79.61089324951172,
+                        "y": 64.19277954101562,
+                        "z": 37.76368713378906
+                    },
+                    "min_corner": {
+                        "x": -79.6106948852539,
+                        "y": 10.39920425415039,
+                        "z": 5.558902740478516
+                    }
+                },
+                "canonical_model_hash": "cbd32e44b85f586b96b521c4af2900571c7cdee5b6c2f67c5c0c22e6",
+                "has_supports": false,
+                "id": "{0a955aad-bfeb-4d1d-9385-f071396e4d4f}",
+                "in_bounds": true,
+                "name": "HoseAssembly",
+                "orientation": {
+                    "x": 87.57876586914062,
+                    "y": 90.64582061767578,
+                    "z": 0.6380146145820618
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/HoseAssembly.stl",
+                "position": {
+                    "x": -80.55699920654297,
+                    "y": 57.591068267822266,
+                    "z": 37.78502655029297
+                },
+                "raw_mesh_hash": "d8ad0dab500d9ce2b5c517bc3c5159e21ec65daddf6ab3e310298b3a",
+                "scale": 0.2997930943965912,
+                "units": "MILLIMETERS",
+                "visible": true
+            },
+            {
+                "bounding_box": {
+                    "max_corner": {
+                        "x": -26.667999267578125,
+                        "y": 13.180087089538574,
+                        "z": 30.805387496948242
+                    },
+                    "min_corner": {
+                        "x": -52.06800079345703,
+                        "y": -11.108086585998535,
+                        "z": 6.517213821411133
+                    }
+                },
+                "canonical_model_hash": "5d63957c042ae7e1a07da165d32036d4fb23cd9f6f988989244ae018",
+                "has_supports": false,
+                "id": "{6c28e840-6f27-411e-9cad-1c5750e80d39}",
+                "in_bounds": true,
+                "name": "shell_1_of_disjoint-spheres",
+                "orientation": {
+                    "x": 8.537736903235782e-06,
+                    "y": -89.99999237060547,
+                    "z": -56.252742767333984
+                },
+                "original_file": "C:/Users/avsimha/Documents/PythonEnvs/FormlabsServer/Code/Test Data/Misc Files/shell_1_of_disjoint-spheres.stl",
+                "position": {
+                    "x": -39.36800003051758,
+                    "y": 1.0360000133514404,
+                    "z": 18.661300659179688
+                },
+                "raw_mesh_hash": "38548b1303840553a75d27b56d5f52f80dce49aa35b60999abd70a14",
+                "scale": 1,
+                "units": "MILLIMETERS",
+                "visible": true
+            }
+        ],
+        "scene_settings": {
+            "layer_thickness_mm": "0.11",
+            "machine_type": "PILK-1-0",
+            "material_code": "FLP12G01",
+            "print_setting": "DEFAULT"
+        }
+    }
+}

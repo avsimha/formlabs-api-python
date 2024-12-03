@@ -6,7 +6,7 @@ import json
 
 pathToPreformServer = None
 if sys.platform == 'win32':
-    pathToPreformServer = pathlib.Path().resolve() / "PreFormServer/PreFormServer.exe"
+    pathToPreformServer = pathlib.Path().resolve() / "C:\\Users\\avsimha\\PreFormServer\\PreFormServer.exe"
 elif sys.platform == 'darwin':
     pathToPreformServer = pathlib.Path().resolve() / "PreFormServer.app/Contents/MacOS/PreFormServer"
 else:

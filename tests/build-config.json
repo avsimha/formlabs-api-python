@@ -1,0 +1,12 @@
+{
+  "scene_settings": {
+    "layer_thickness_mm": 0.1,
+    "machine_type": "FORM-4-0",
+    "material_code": "FLGPGR05",
+    "print_setting": "DEFAULT"
+  },
+  "auto_orient": true,
+  "dental_mode": false,
+  "auto_support": true,
+  "auto_layout": true
+}

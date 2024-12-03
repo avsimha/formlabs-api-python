@@ -9,6 +9,7 @@ import formlabs_local_api_minimal as formlabs
 import requests
 import subprocess
 import sys
+import webbrowser
 
 # Directory where jobs are stored
 JOBS_DIR = 'jobs'
@@ -16,12 +17,12 @@ UPLOAD_FOLDER = '/tmp'
 
 pathToPreformServer = None
 if sys.platform == 'win32':
-    pathToPreformServer = pathlib.Path().resolve().parents[1] / "PreFormServer/PreFormServer.exe"
-elif sys.platform == 'darwin':
-    pathToPreformServer = pathlib.Path().resolve().parents[1] / "PreFormServer.app/Contents/MacOS/PreFormServer"
-else:
-    print("Unsupported platform")
-    sys.exit(1)
+    pathToPreformServer = pathlib.Path().resolve() / "C:\\Users\\avsimha\\PreFormServer\\PreFormServer.exe"
+# elif sys.platform == 'darwin':
+#     pathToPreformServer = pathlib.Path().resolve() / "PreFormServer.app/Contents/MacOS/PreFormServer"
+# else:
+#     print("Unsupported platform")
+#     sys.exit(1)
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -243,5 +244,5 @@ def import_parts(job_id):
 
 if __name__ == '__main__':
     with formlabs.PreFormApi.start_preform_server(pathToPreformServer=pathToPreformServer):
-        subprocess.Popen(["open", "http://localhost:8323"])
+        webbrowser.open("http://localhost:8323")
         app.run(port=8323, debug=False)

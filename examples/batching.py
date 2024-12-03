@@ -44,10 +44,15 @@ def list_files_in_directory(directory_path):
 
 def create_scene(preform):
     return preform.api.create_scene(SceneTypeModel(Manual(
-        machine_type="FORM-4-0",
-        material_code="FLGPGR05",
-        layer_thickness_mm=ManualLayerThicknessMm("0.1"),
-        print_setting="DEFAULT",
+        # machine_type="FORM-4-0",
+        # material_code="FLGPGR05",
+        # layer_thickness_mm=ManualLayerThicknessMm("0.1"),
+        # print_setting="DEFAULT",
+        
+        machine_type="FS30-1-0",
+        material_code="FLP12G01",
+        layer_thickness_mm=ManualLayerThicknessMm("0.11"),
+        print_setting="DEFAULT_V4",
     )))
 
 parser = argparse.ArgumentParser(description="Process a folder path.")
@@ -70,12 +75,12 @@ CSV_RESULT_FILENAME = os.path.join(directory_path, "summary.csv")
 
 pathToPreformServer = None
 if sys.platform == 'win32':
-    pathToPreformServer = pathlib.Path().resolve() / "PreFormServer/PreFormServer.exe"
-elif sys.platform == 'darwin':
-    pathToPreformServer = pathlib.Path().resolve() / "PreFormServer.app/Contents/MacOS/PreFormServer"
-else:
-    print("Unsupported platform")
-    sys.exit(1)
+    pathToPreformServer = pathlib.Path().resolve() / "C:\\Users\\avsimha\\PreFormServer\\PreFormServer.exe"
+# elif sys.platform == 'darwin':
+#     pathToPreformServer = pathlib.Path().resolve() / "PreFormServer.app/Contents/MacOS/PreFormServer"
+# else:
+#     print("Unsupported platform")
+#     sys.exit(1)
 
 with formlabs.PreFormApi.start_preform_server(pathToPreformServer=pathToPreformServer) as preform:
     if args.username and args.password:
