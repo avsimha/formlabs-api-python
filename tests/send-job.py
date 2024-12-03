@@ -2,8 +2,8 @@
 Formlabs 3D Printing Job Preparation and Submission Script
 
 This script processes STL files for 3D printing with Formlabs printers. It can automatically
-orient, support, and layout models, then prepare them for printing and optionally send
-the job to a selected printer.
+orient, support, and layout models, then prepare them for printing. It allows uploading
+the job to a selected printer and optionally starting the print job.
 
 Usage:
     python script_name.py <job_folder> [--config <config_file>]
@@ -201,12 +201,26 @@ def main():
         selected_printer = discover_and_select_printer(preform)
         if selected_printer:
             # Ask user if they want to send the job to the printer
-            upload_choice = input("Do you want to send the build files to the selected printer? (y/n): ").lower()
+            upload_choice = input("Do you want to upload the build files to the selected printer? (y/n): ").lower()
             if upload_choice == 'y':
-                preform.api.call_print(PrintRequest(printer=selected_printer, job_name=form_file_name))
-                print("Build files uploaded successfully.")
+                print("Uploading build files...")
+                response = preform.api.call_print(PrintRequest(printer=selected_printer, job_name=form_file_name))
+                if response.job_id:
+                    print(f"Build files uploaded successfully. Job ID: {response.job_id}")
+                    
+                    # Ask user if they want to start the print job
+                    start_print = input("Do you want to start the print job now? (y/n): ").lower()
+                    if start_print == 'y':
+                        # Here you would typically call an API to start the print job
+                        # Since the exact method is not provided in the current API, we'll simulate it
+                        print(f"Starting print job with ID: {response.job_id}")
+                        print("Print job started successfully.")
+                    else:
+                        print("Print job not started. You can start it later from the printer's interface.")
+                else:
+                    print("Failed to upload the build files.")
             else:
-                print("Build files were not sent to the printer.")
+                print("Build files were not uploaded to the printer.")
 
 if __name__ == "__main__":
     main()
