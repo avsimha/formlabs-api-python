@@ -6,27 +6,27 @@ orient, support, and layout models, then prepare them for printing. It allows up
 the job to a selected printer and optionally starting the print job.
 
 Usage:
-    python script_name.py <job_folder> [--config <config_file>]
+    python script_name.py <build_file> [--config <config_file>]
 
 Arguments:
-    job_folder      Path to the folder containing STL files to be processed
+    build_file      Path to the build file that should be uploaded
     --config        Optional: Path to a JSON configuration file for build settings
 
 Example:
-    python script_name.py /path/to/stl/files --config build_config.json
+    python script_name.py /path/to/build/file.form --config build-config_fuse.json
 
-Configuration File Format (build_config.json):
+Configuration File Format (build-config_fuse.json):
 {
   "scene_settings": {
-    "layer_thickness_mm": 0.1,  // Can be a number or "ADAPTIVE"
-    "machine_type": "FORM-4-0",
-    "material_code": "FLGPGR05",
-    "print_setting": "DEFAULT"
+    "layer_thickness_mm": 0.11,
+    "machine_type": "FS30-1-0",
+    "material_code": "FLP12G01",
+    "print_setting": "DEFAULT_V4"
   },
   "auto_orient": true,
   "dental_mode": false,
   "auto_support": true,
-  "auto_layout": true
+  "auto_pack": true
 }
 
 Note: Ensure that 'formlabs-materials-data.json' is in the same directory as this script.
@@ -40,17 +40,10 @@ import json
 import requests
 import formlabs_local_api as formlabs
 from formlabs_local_api import (
-    AutoSupportRequest,
-    AutoOrientRequest,
-    AutoLayoutRequest,
     SceneTypeModel,
     Manual,
     ManualLayerThicknessMm,
-    ModelsSelectionModel,
-    LoadFormFileRequest,
     PrintRequest,
-    Default,
-    DentalMode,
 )
 
 BASE_URL = "http://localhost:44388"
@@ -64,8 +57,6 @@ def get_preform_server_path():
     """Determine the path to PreFormServer executable."""
     if sys.platform == 'win32':
         default_path = pathlib.Path("C:\\Users\\avsimha\\PreFormServer\\PreFormServer.exe")
-    elif sys.platform == 'darwin':
-        default_path = pathlib.Path("/Applications/PreForm.app/Contents/MacOS/PreFormServer")
     else:
         print("Unsupported platform")
         sys.exit(1)
@@ -127,16 +118,17 @@ def discover_and_select_printer(preform):
 
 def main():
     # Set up command-line argument parsing
-    parser = argparse.ArgumentParser(description="Process STL files and send to a Formlabs printer.")
-    parser.add_argument("job_folder", type=str, help="Path to the folder containing STL files")
+    parser = argparse.ArgumentParser()
+    # parser.add_argument("build_file", type=str, help="Path to the Preform build file")
     parser.add_argument("--config", type=str, help="Path to a JSON configuration file")
     args = parser.parse_args()
 
-    # Validate and process the job folder path
-    directory_path = os.path.abspath(args.job_folder)
-    if not os.path.isdir(directory_path):
-        print(f"Error: The specified path '{directory_path}' is not a valid directory.")
-        return
+    # Validate and process the build file path
+    # build_file_path = pathlib.Path(args.build_file)
+    build_file_path = "test_print.form"
+    # if not build_file_path.exists() and build_file_path.is_file():
+    #     print(f"Error: The specified path '{build_file_path}' is not valid.")
+    #     return
 
     # Load material data
     material_data = load_material_data('formlabs-materials-data.json')
@@ -148,16 +140,7 @@ def main():
     else:
         print("No configuration file specified. Please create a JSON configuration file and use the --config option.")
         return
-
-    # Find STL files in the job folder
-    files_to_batch = [f for f in os.listdir(directory_path) if f.endswith('.stl')]
-    if not files_to_batch:
-        print("No STL files found in the specified directory.")
-        return
-
-    print("Files to batch:")
-    print(files_to_batch)
-
+    
     # Get path to PreFormServer
     pathToPreformServer = get_preform_server_path()
 
@@ -166,37 +149,6 @@ def main():
         # Create a new scene with the specified settings
         create_scene(preform, build_options['scene_settings'])
 
-        # Process each STL file
-        for file in files_to_batch:
-            file_path = os.path.join(directory_path, file)
-            print(f"Importing {file}")
-            model = preform.api.import_model({"file": file_path})
-            model_id = model.id
-
-            # Apply auto-orientation if enabled
-            if build_options['auto_orient']:
-                print(f"Auto orienting {model_id}")
-                if build_options['dental_mode']:
-                    preform.api.auto_orient(AutoOrientRequest(DentalMode(models=ModelsSelectionModel([model_id]), mode="DENTAL", tilt=0)))
-                else:
-                    preform.api.auto_orient(AutoOrientRequest(Default(models=ModelsSelectionModel([model_id]))))
-
-            # Apply auto-support if enabled
-            if build_options['auto_support']:
-                print(f"Auto supporting {model_id}")
-                preform.api.auto_support(AutoSupportRequest(models=ModelsSelectionModel([model_id])))
-
-        # Apply auto-layout if enabled
-        if build_options['auto_layout']:
-            print("Auto layouting all")
-            preform.api.auto_layout(AutoLayoutRequest(models=ModelsSelectionModel("ALL")))
-
-        # Save the prepared job as a .form file
-        form_file_name = "batch_print.form"
-        save_path = os.path.join(directory_path, form_file_name)
-        preform.api.save_form_file(LoadFormFileRequest(file=save_path))
-        print(f"Saved batch to {save_path}")
-
         # Discover and select a printer
         selected_printer = discover_and_select_printer(preform)
         if selected_printer:
@@ -204,20 +156,9 @@ def main():
             upload_choice = input("Do you want to upload the build files to the selected printer? (y/n): ").lower()
             if upload_choice == 'y':
                 print("Uploading build files...")
-                print(form_file_name)
-                response = preform.api.call_print(PrintRequest(printer=selected_printer, job_name=form_file_name))
+                response = preform.api.call_print(PrintRequest(printer=selected_printer, job_name=build_file_path))
                 if response.job_id:
                     print(f"Build files uploaded successfully. Job ID: {response.job_id}")
-                    
-                    # Ask user if they want to start the print job
-                    start_print = input("Do you want to start the print job now? (y/n): ").lower()
-                    if start_print == 'y':
-                        # Here you would typically call an API to start the print job
-                        # Since the exact method is not provided in the current API, we'll simulate it
-                        print(f"Starting print job with ID: {response.job_id}")
-                        print("Print job started successfully.")
-                    else:
-                        print("Print job not started. You can start it later from the printer's interface.")
                 else:
                     print("Failed to upload the build files.")
             else:

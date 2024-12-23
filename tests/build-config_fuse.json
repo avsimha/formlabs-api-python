@@ -1,0 +1,12 @@
+{
+  "scene_settings": {
+    "layer_thickness_mm": 0.11,
+    "machine_type": "FS30-1-0",
+    "material_code": "FLP12G01",
+    "print_setting": "DEFAULT_V4"
+  },
+  "auto_orient": false,
+  "dental_mode": false,
+  "auto_support": false,
+  "auto_layout": false
+}
